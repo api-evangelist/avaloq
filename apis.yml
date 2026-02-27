@@ -1,0 +1,97 @@
+name: Avaloq
+description: Avaloq is a leading provider of wealth management technology and digital banking solutions, offering comprehensive APIs for financial services integration.
+url: https://www.avaloq.com
+type: Index
+created: '2024-01-20'
+modified: '2024-01-20'
+specificationVersion: '0.16'
+apis:
+- name: Avaloq Banking API
+  description: Core banking API providing access to account management, transactions, and customer data for wealth management and digital banking solutions.
+  image: https://www.avaloq.com/assets/images/avaloq-logo.png
+  humanURL: https://www.avaloq.com/solutions/avaloq-banking-suite
+  baseURL: https://api.avaloq.com/banking/v1
+  tags:
+  - Banking
+  - Wealth Management
+  - Accounts
+  - Transactions
+  properties:
+  - type: Documentation
+    url: https://developer.avaloq.com/docs/banking-api
+  - type: OpenAPI
+    url: https://api.avaloq.com/banking/v1/openapi.json
+  - type: Authentication
+    url: https://developer.avaloq.com/docs/authentication
+- name: Avaloq Wealth Management API
+  description: Specialized API for wealth management operations including portfolio management, investment advisory, and client reporting.
+  image: https://www.avaloq.com/assets/images/avaloq-logo.png
+  humanURL: https://www.avaloq.com/solutions/wealth-management
+  baseURL: https://api.avaloq.com/wealth/v1
+  tags:
+  - Wealth Management
+  - Portfolio
+  - Investments
+  - Advisory
+  properties:
+  - type: Documentation
+    url: https://developer.avaloq.com/docs/wealth-api
+  - type: OpenAPI
+    url: https://api.avaloq.com/wealth/v1/openapi.json
+- name: Avaloq Digital Banking API
+  description: Digital banking capabilities including mobile banking, online banking, and omnichannel customer experience.
+  image: https://www.avaloq.com/assets/images/avaloq-logo.png
+  humanURL: https://www.avaloq.com/solutions/digital-banking
+  baseURL: https://api.avaloq.com/digital/v1
+  tags:
+  - Digital Banking
+  - Mobile Banking
+  - Customer Experience
+  - Omnichannel
+  properties:
+  - type: Documentation
+    url: https://developer.avaloq.com/docs/digital-api
+  - type: OpenAPI
+    url: https://api.avaloq.com/digital/v1/openapi.json
+- name: Avaloq Payment API
+  description: Payment processing and transaction management API supporting various payment methods and currencies.
+  image: https://www.avaloq.com/assets/images/avaloq-logo.png
+  humanURL: https://www.avaloq.com/solutions/payments
+  baseURL: https://api.avaloq.com/payments/v1
+  tags:
+  - Payments
+  - Transactions
+  - Transfers
+  - Currency
+  properties:
+  - type: Documentation
+    url: https://developer.avaloq.com/docs/payment-api
+  - type: OpenAPI
+    url: https://api.avaloq.com/payments/v1/openapi.json
+common:
+- type: Developer Portal
+  url: https://developer.avaloq.com
+- type: Authentication
+  url: https://developer.avaloq.com/docs/authentication
+- type: Getting Started
+  url: https://developer.avaloq.com/getting-started
+- type: Status
+  url: https://status.avaloq.com
+- type: Terms of Service
+  url: https://www.avaloq.com/terms
+- type: Privacy Policy
+  url: https://www.avaloq.com/privacy
+- type: Support
+  url: https://support.avaloq.com
+- type: Contact
+  url: https://www.avaloq.com/contact
+maintainers:
+- name: Avaloq API Team
+  email: api-support@avaloq.com
+  url: https://developer.avaloq.com
+tags:
+- Financial Services
+- Banking
+- Wealth Management
+- Digital Banking
+- Fintech
