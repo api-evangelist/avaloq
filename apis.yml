@@ -8,11 +8,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Financial Services
   - Banking
-  - Wealth Management
   - Digital Banking
+  - Financial Services
   - Fintech
+  - Wealth Management
 url: >-
   https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/apis.yml
 created: '2024-01-20'
@@ -26,10 +26,10 @@ apis:
       and customer data for wealth management and digital banking solutions.
     humanURL: https://developer.avaloq.com/
     tags:
-      - Banking
-      - Wealth Management
       - Accounts
+      - Banking
       - Transactions
+      - Wealth Management
     properties:
       - type: Documentation
         url: https://developer.avaloq.com/
