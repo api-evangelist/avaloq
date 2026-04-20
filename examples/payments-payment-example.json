@@ -1,0 +1,9 @@
+{
+  "id": "PAY-001",
+  "amount": 5000.0,
+  "currency": "EUR",
+  "paymentType": "SEPA_CREDIT_TRANSFER",
+  "status": "ACCEPTED",
+  "createdAt": "2026-04-19T09:00:00Z",
+  "remittanceInfo": "Invoice 2026-042"
+}

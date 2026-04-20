@@ -1,0 +1,32 @@
+name: Avaloq Banking API
+description: Core banking operations for account management, transactions, and customer data.
+apis:
+  - name: Avaloq Banking API
+    baseURL: https://api.avaloq.com
+    openapi: https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-banking-openapi.yml
+servers:
+  rest:
+    port: 8100
+  mcp:
+    port: 9100
+operations:
+  - operationId: listAccounts
+    summary: List Accounts
+    description: Retrieve a list of accounts for a customer.
+    method: GET
+    path: /banking/v1/accounts
+  - operationId: getAccount
+    summary: Get Account
+    description: Retrieve details for a specific account by ID.
+    method: GET
+    path: /banking/v1/accounts/{accountId}
+  - operationId: listTransactions
+    summary: List Transactions
+    description: Retrieve transactions for an account with optional date filtering.
+    method: GET
+    path: /banking/v1/accounts/{accountId}/transactions
+  - operationId: listCustomers
+    summary: List Customers
+    description: Retrieve a list of customers.
+    method: GET
+    path: /banking/v1/customers

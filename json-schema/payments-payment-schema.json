@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/payments-payment-schema.json",
+  "title": "Payment",
+  "description": "Payment instruction details",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Payment ID",
+      "example": "PAY-001234"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "PROCESSING",
+        "COMPLETED",
+        "REJECTED",
+        "CANCELLED"
+      ],
+      "example": "COMPLETED"
+    },
+    "amount": {
+      "type": "number",
+      "example": 5000.0
+    },
+    "currency": {
+      "type": "string",
+      "example": "EUR"
+    },
+    "executionDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2025-04-20"
+    },
+    "valueDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2025-04-20"
+    },
+    "endToEndId": {
+      "type": "string",
+      "description": "End-to-end transaction reference",
+      "example": "E2E-001234"
+    }
+  }
+}

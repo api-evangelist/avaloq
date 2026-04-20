@@ -1,0 +1,10 @@
+{
+  "id": "CUST-001",
+  "firstName": "Hans",
+  "lastName": "Muster",
+  "dateOfBirth": "1980-06-15",
+  "nationality": "CH",
+  "email": "hans.muster@example.com",
+  "phone": "+41791234567",
+  "status": "ACTIVE"
+}

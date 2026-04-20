@@ -1,0 +1,27 @@
+name: Avaloq Payments API
+description: Payment processing operations for SEPA, SWIFT, and domestic payments.
+apis:
+  - name: Avaloq Payments API
+    baseURL: https://api.avaloq.com
+    openapi: https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-payments-openapi.yml
+servers:
+  rest:
+    port: 8101
+  mcp:
+    port: 9101
+operations:
+  - operationId: initiatePayment
+    summary: Initiate Payment
+    description: Submit a new payment instruction (SEPA, SWIFT, or domestic).
+    method: POST
+    path: /payments/v1/payments
+  - operationId: listPayments
+    summary: List Payments
+    description: Retrieve a list of payment instructions with optional status filtering.
+    method: GET
+    path: /payments/v1/payments
+  - operationId: getPayment
+    summary: Get Payment
+    description: Retrieve details and status of a specific payment.
+    method: GET
+    path: /payments/v1/payments/{paymentId}

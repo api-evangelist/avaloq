@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/payments-payment-list-schema.json",
+  "title": "PaymentList",
+  "description": "Paginated list of payments",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Payment"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 42
+    },
+    "offset": {
+      "type": "integer",
+      "example": 0
+    }
+  }
+}

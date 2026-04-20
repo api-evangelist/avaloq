@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/payments-payment-request-schema.json",
+  "title": "PaymentRequest",
+  "description": "Payment instruction request",
+  "type": "object",
+  "required": [
+    "debtorAccountId",
+    "creditorIban",
+    "amount",
+    "currency"
+  ],
+  "properties": {
+    "debtorAccountId": {
+      "type": "string",
+      "description": "Source account ID",
+      "example": "ACC-001234"
+    },
+    "creditorIban": {
+      "type": "string",
+      "description": "Destination IBAN",
+      "example": "DE89370400440532013000"
+    },
+    "creditorName": {
+      "type": "string",
+      "description": "Beneficiary name",
+      "example": "Jane Smith"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Payment amount",
+      "example": 5000.0
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code",
+      "example": "EUR"
+    },
+    "remittanceInfo": {
+      "type": "string",
+      "description": "Payment reference",
+      "example": "Invoice 2025-001"
+    },
+    "paymentType": {
+      "type": "string",
+      "enum": [
+        "SEPA_CREDIT",
+        "SWIFT",
+        "DOMESTIC",
+        "INSTANT"
+      ],
+      "example": "SEPA_CREDIT"
+    },
+    "executionDate": {
+      "type": "string",
+      "format": "date",
+      "example": "2025-04-20"
+    }
+  }
+}

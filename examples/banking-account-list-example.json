@@ -1,0 +1,15 @@
+{
+  "items": [
+    {
+      "id": "ACC-001",
+      "accountNumber": "CH93-0076-2011-6238-5295-7",
+      "accountType": "SAVINGS",
+      "currency": "CHF",
+      "balance": 125000.0,
+      "status": "ACTIVE"
+    }
+  ],
+  "totalCount": 1,
+  "page": 0,
+  "pageSize": 20
+}

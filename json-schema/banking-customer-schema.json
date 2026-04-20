@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/banking-customer-schema.json",
+  "title": "Customer",
+  "description": "Banking customer record",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Customer ID",
+      "example": "CUST-001234"
+    },
+    "firstName": {
+      "type": "string",
+      "example": "Jane"
+    },
+    "lastName": {
+      "type": "string",
+      "example": "Smith"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "example": "jane.smith@example.com"
+    },
+    "phone": {
+      "type": "string",
+      "example": "+41791234567"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "SUSPENDED"
+      ],
+      "example": "ACTIVE"
+    },
+    "kycStatus": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "APPROVED",
+        "REJECTED",
+        "REQUIRES_REVIEW"
+      ],
+      "example": "APPROVED"
+    },
+    "clientSince": {
+      "type": "string",
+      "format": "date",
+      "example": "2020-01-15"
+    },
+    "residenceCountry": {
+      "type": "string",
+      "example": "CH"
+    },
+    "taxResidency": {
+      "type": "string",
+      "example": "CH"
+    }
+  }
+}

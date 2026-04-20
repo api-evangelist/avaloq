@@ -1,0 +1,11 @@
+{
+  "amount": 5000.0,
+  "currency": "EUR",
+  "paymentType": "SEPA_CREDIT_TRANSFER",
+  "debtorAccountId": "ACC-001",
+  "creditorIban": "DE89370400440532013000",
+  "creditorName": "Vendor GmbH",
+  "creditorBic": "COBADEFFXXX",
+  "remittanceInfo": "Invoice 2026-042",
+  "requestedExecutionDate": "2026-04-20"
+}

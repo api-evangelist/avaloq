@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "TXN-001",
+      "accountId": "ACC-001",
+      "amount": -1500.0,
+      "currency": "CHF",
+      "transactionDate": "2026-04-19T10:00:00Z",
+      "description": "Rent payment",
+      "transactionType": "DEBIT",
+      "status": "BOOKED"
+    }
+  ],
+  "totalCount": 1,
+  "page": 0,
+  "pageSize": 20
+}

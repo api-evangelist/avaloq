@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/banking-account-schema.json",
+  "description": "Bank account details",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Avaloq account ID",
+      "example": "ACC-001234"
+    },
+    "accountNumber": {
+      "type": "string",
+      "description": "IBAN or account number",
+      "example": "CH56048350012345678009"
+    },
+    "accountName": {
+      "type": "string",
+      "description": "Account display name",
+      "example": "Main Current Account"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code",
+      "example": "CHF"
+    },
+    "balance": {
+      "type": "double",
+      "description": "Current balance",
+      "example": 250000.0
+    },
+    "availableBalance": {
+      "type": "double",
+      "description": "Available balance after holds",
+      "example": 245000.0
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "INACTIVE",
+        "CLOSED",
+        "BLOCKED"
+      ],
+      "example": "ACTIVE"
+    },
+    "customerId": {
+      "type": "string",
+      "description": "Owning customer ID",
+      "example": "CUST-001234"
+    },
+    "openedDate": {
+      "type": "date",
+      "example": "2020-01-15"
+    },
+    "accountType": {
+      "type": "string",
+      "enum": [
+        "CURRENT",
+        "SAVINGS",
+        "INVESTMENT",
+        "CUSTODY"
+      ],
+      "example": "CURRENT"
+    }
+  },
+  "name": "Account"
+}

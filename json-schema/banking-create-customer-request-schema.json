@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/banking-create-customer-request-schema.json",
+  "title": "CreateCustomerRequest",
+  "description": "Request to create a new customer",
+  "type": "object",
+  "required": [
+    "firstName",
+    "lastName",
+    "email"
+  ],
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "example": "Jane"
+    },
+    "lastName": {
+      "type": "string",
+      "example": "Smith"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "example": "jane.smith@example.com"
+    },
+    "phone": {
+      "type": "string",
+      "example": "+41791234567"
+    },
+    "residenceCountry": {
+      "type": "string",
+      "example": "CH"
+    },
+    "dateOfBirth": {
+      "type": "string",
+      "format": "date",
+      "example": "1980-06-15"
+    }
+  }
+}

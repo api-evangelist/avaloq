@@ -1,0 +1,45 @@
+name: Avaloq Wealth Management Workflow
+description: End-to-end wealth management workflow combining banking, payments, and client management for financial institutions.
+persona:
+  - Wealth Manager
+  - Relationship Advisor
+  - Operations Specialist
+apis:
+  - name: Avaloq Banking API
+    shared: capabilities/shared/banking.yaml
+  - name: Avaloq Payments API
+    shared: capabilities/shared/payments.yaml
+servers:
+  rest:
+    port: 8080
+  mcp:
+    port: 9090
+tools:
+  - name: listAccounts
+    description: List all accounts for a customer.
+    source: banking
+    operationId: listAccounts
+  - name: getAccount
+    description: Get account details and balance.
+    source: banking
+    operationId: getAccount
+  - name: listTransactions
+    description: Retrieve account transaction history.
+    source: banking
+    operationId: listTransactions
+  - name: listCustomers
+    description: List customers in the banking system.
+    source: banking
+    operationId: listCustomers
+  - name: initiatePayment
+    description: Submit a new payment instruction.
+    source: payments
+    operationId: initiatePayment
+  - name: listPayments
+    description: List payment instructions and their statuses.
+    source: payments
+    operationId: listPayments
+  - name: getPayment
+    description: Get details of a specific payment.
+    source: payments
+    operationId: getPayment

@@ -1,0 +1,75 @@
+name: Avaloq Vocabulary
+description: Unified taxonomy mapping resources, actions, workflows, and personas across Avaloq banking and wealth management APIs.
+operational:
+  resources:
+    - name: Account
+      description: Bank account entity with balance and status information.
+      apis: [Banking API]
+    - name: Transaction
+      description: Financial transaction record associated with an account.
+      apis: [Banking API]
+    - name: Customer
+      description: Individual or entity that holds accounts with the institution.
+      apis: [Banking API]
+    - name: Payment
+      description: Payment instruction for domestic, SEPA, or SWIFT transfers.
+      apis: [Payments API]
+    - name: Portfolio
+      description: Collection of investment holdings managed for a client.
+      apis: [Wealth Management API]
+    - name: Order
+      description: Trade order for buying or selling securities.
+      apis: [Trading API]
+    - name: Authorization
+      description: Prior authorization or service review request.
+      apis: [Compliance API]
+  actions:
+    - name: List
+      description: Retrieve a paginated collection of resources.
+      httpMethod: GET
+    - name: Get
+      description: Retrieve a single resource by identifier.
+      httpMethod: GET
+    - name: Create
+      description: Create a new resource.
+      httpMethod: POST
+    - name: Update
+      description: Update an existing resource.
+      httpMethod: PUT
+    - name: Delete
+      description: Remove a resource.
+      httpMethod: DELETE
+    - name: Initiate
+      description: Initiate a payment or transaction process.
+      httpMethod: POST
+    - name: Search
+      description: Search or filter resources by criteria.
+      httpMethod: GET
+capability:
+  workflows:
+    - name: Wealth Management
+      description: End-to-end workflow for client account management, transactions, and payment processing.
+      file: capabilities/avaloq-wealth-management.yaml
+  personas:
+    - name: Wealth Manager
+      description: Manages client portfolios and investment strategies.
+    - name: Relationship Advisor
+      description: Maintains client relationships and coordinates banking services.
+    - name: Operations Specialist
+      description: Handles back-office operations, payments, and settlements.
+  domains:
+    - name: Banking
+      description: Core banking operations including accounts, transactions, and customer management.
+    - name: Payments
+      description: Payment processing for domestic and international transfers.
+    - name: Wealth Management
+      description: Investment portfolio and asset management.
+    - name: Trading
+      description: Order management and trade execution.
+    - name: Compliance
+      description: Regulatory compliance, AML, and risk management.
+  namespaces:
+    - prefix: avaloq-banking
+      uri: https://api.avaloq.com/banking#
+    - prefix: avaloq-payments
+      uri: https://api.avaloq.com/payments#

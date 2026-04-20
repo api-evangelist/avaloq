@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/banking-customer-list-schema.json",
+  "description": "Paginated list of customers",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Customer"
+      }
+    },
+    "total": {
+      "type": "int32",
+      "example": 1250
+    },
+    "offset": {
+      "type": "int32",
+      "example": 0
+    }
+  },
+  "name": "CustomerList"
+}

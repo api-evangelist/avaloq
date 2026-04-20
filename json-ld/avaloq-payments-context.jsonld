@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@vocab": "https://api.avaloq.com/payments#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "http://schema.org/",
+    "amount": {
+      "@id": "http://schema.org/price"
+    },
+    "currency": {
+      "@id": "http://schema.org/priceCurrency"
+    },
+    "executionDate": {
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "id": {
+      "@id": "http://schema.org/identifier"
+    },
+    "status": {
+      "@id": "http://schema.org/status"
+    },
+    "valueDate": {
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "total": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "offset": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    }
+  }
+}

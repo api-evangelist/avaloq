@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/banking-transaction-schema.json",
+  "description": "Bank account transaction",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Transaction ID",
+      "example": "TRX-001234"
+    },
+    "accountId": {
+      "type": "string",
+      "example": "ACC-001234"
+    },
+    "amount": {
+      "type": "double",
+      "description": "Transaction amount (positive=credit, negative=debit)",
+      "example": -1500.0
+    },
+    "currency": {
+      "type": "string",
+      "example": "CHF"
+    },
+    "valueDate": {
+      "type": "date",
+      "example": "2025-04-15"
+    },
+    "bookingDate": {
+      "type": "date",
+      "example": "2025-04-15"
+    },
+    "description": {
+      "type": "string",
+      "example": "Transfer to savings"
+    },
+    "counterpartyName": {
+      "type": "string",
+      "example": "Jane Smith"
+    },
+    "counterpartyIban": {
+      "type": "string",
+      "example": "DE89370400440532013000"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CREDIT",
+        "DEBIT",
+        "FEE",
+        "INTEREST"
+      ],
+      "example": "DEBIT"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "BOOKED",
+        "CANCELLED"
+      ],
+      "example": "BOOKED"
+    }
+  },
+  "name": "Transaction"
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/banking-account-list-schema.json",
+  "title": "AccountList",
+  "description": "Paginated list of accounts",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Account"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 5
+    },
+    "offset": {
+      "type": "integer",
+      "example": 0
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/json-schema/banking-transaction-list-schema.json",
+  "description": "Paginated list of transactions",
+  "type": "object",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Transaction"
+      }
+    },
+    "total": {
+      "type": "int32",
+      "example": 124
+    },
+    "offset": {
+      "type": "int32",
+      "example": 0
+    }
+  },
+  "name": "TransactionList"
+}

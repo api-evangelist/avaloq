@@ -1,0 +1,58 @@
+{
+  "@context": {
+    "@vocab": "https://api.avaloq.com/banking#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "http://schema.org/",
+    "total": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "offset": {
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "id": {
+      "@id": "http://schema.org/identifier"
+    },
+    "amount": {
+      "@id": "http://schema.org/price"
+    },
+    "currency": {
+      "@id": "http://schema.org/priceCurrency"
+    },
+    "valueDate": {
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "bookingDate": {
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "description": {
+      "@id": "http://schema.org/description"
+    },
+    "type": {
+      "@id": "http://schema.org/additionalType"
+    },
+    "status": {
+      "@id": "http://schema.org/status"
+    },
+    "email": {
+      "@id": "http://schema.org/email"
+    },
+    "phone": {
+      "@id": "http://schema.org/telephone"
+    },
+    "dateOfBirth": {
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "clientSince": {
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    "balance": {
+      "@type": "http://www.w3.org/2001/XMLSchema#decimal"
+    },
+    "availableBalance": {
+      "@type": "http://www.w3.org/2001/XMLSchema#decimal"
+    },
+    "openedDate": {
+      "@type": "http://www.w3.org/2001/XMLSchema#date"
+    }
+  }
+}

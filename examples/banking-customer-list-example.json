@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "id": "CUST-001",
+      "firstName": "Hans",
+      "lastName": "Muster",
+      "email": "hans.muster@example.com",
+      "status": "ACTIVE"
+    }
+  ],
+  "totalCount": 1
+}
