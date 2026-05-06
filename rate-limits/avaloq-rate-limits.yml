@@ -4,117 +4,37 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Avaloq
 providerId: avaloq
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
+notes: Avaloq does not publish public API rate limits. Limits are governed by the deployment contract
+  (SaaS sizing or on-prem cluster sizing) and the institution's licensed throughput.
 tags:
   - Banking
-  - Digital Banking
-  - Financial Services
-  - Fintech
-  - Payments
   - Wealth Management
+  - Core Banking
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Avaloq API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Rate limit posture for the Avaloq API surface. Limits are enforced per-institution and
+  scale with the deployed Banking Suite sizing; numeric thresholds live in the customer's deployment
+  contract rather than on the public web.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
   serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Avaloq Banking API
-      - Avaloq Wealth Management API
-      - Avaloq Payments API
-      - Avaloq Client Management API
-      - Avaloq Trading API
-      - Avaloq Compliance & Risk API
-      - Avaloq Community API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Avaloq Banking API
-      - Avaloq Wealth Management API
-      - Avaloq Payments API
-      - Avaloq Client Management API
-      - Avaloq Trading API
-      - Avaloq Compliance & Risk API
-      - Avaloq Community API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Avaloq Banking API
-      - Avaloq Wealth Management API
-      - Avaloq Payments API
-      - Avaloq Client Management API
-      - Avaloq Trading API
-      - Avaloq Compliance & Risk API
-      - Avaloq Community API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Avaloq Banking API
-      - Avaloq Wealth Management API
-      - Avaloq Payments API
-      - Avaloq Client Management API
-      - Avaloq Trading API
-      - Avaloq Compliance & Risk API
-      - Avaloq Community API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Avaloq Banking API
-      - Avaloq Wealth Management API
-      - Avaloq Payments API
-      - Avaloq Client Management API
-      - Avaloq Trading API
-      - Avaloq Compliance & Risk API
-      - Avaloq Community API
+  - name: Avaloq API
+    scope: institution
+    metric: varies
+    limit: see Avaloq deployment contract
+    notes: Throughput is bounded by the licensed Banking Suite tier and host sizing. There is no public
+      RPS table.
 policies:
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: Implement exponential backoff with jitter on 429 / 503; honor Retry-After if present.
+  - name: Deployment Contract Governs
+    description: Sustained throughput must align with the institution's contracted Banking Suite sizing;
+      capacity increases require a contract amendment.
+  - name: Regulated Workload Discipline
+    description: Most Avaloq calls touch regulated financial data; coordinate load tests with Avaloq
+      ops to avoid impacting other tenants in shared SaaS deployments.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
