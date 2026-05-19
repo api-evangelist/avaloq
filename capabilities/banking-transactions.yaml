@@ -1,0 +1,98 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Avaloq Banking API — Transactions
+  description: 'Avaloq Banking API — Transactions. 1 operations. Lead operation: Avaloq List Account Transactions. Self-contained
+    Naftiko capability covering one Avaloq business surface.'
+  tags:
+  - Avaloq
+  - Transactions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AVALOQ_API_KEY: AVALOQ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: banking-transactions
+    baseUri: https://api.avaloq.com
+    description: Avaloq Banking API — Transactions business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-accounts-accountId-transactions
+      path: /v1/accounts/{accountId}/transactions
+      operations:
+      - name: listaccounttransactions
+        method: GET
+        description: Avaloq List Account Transactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: path
+          type: string
+          description: Account ID
+          required: true
+        - name: fromDate
+          in: query
+          type: string
+          description: Start date filter
+        - name: toDate
+          in: query
+          type: string
+          description: End date filter
+        - name: limit
+          in: query
+          type: integer
+          description: Number of transactions per page
+    authentication:
+      type: bearer
+      token: '{{env.AVALOQ_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: banking-transactions-rest
+    port: 8080
+    description: REST adapter for Avaloq Banking API — Transactions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/accounts/{accountid}/transactions
+      name: v1-accounts-accountid-transactions
+      description: REST surface for v1-accounts-accountId-transactions.
+      operations:
+      - method: GET
+        name: listaccounttransactions
+        description: Avaloq List Account Transactions
+        call: banking-transactions.listaccounttransactions
+        with:
+          accountId: rest.accountId
+          fromDate: rest.fromDate
+          toDate: rest.toDate
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: banking-transactions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Avaloq Banking API — Transactions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: avaloq-list-account-transactions
+      description: Avaloq List Account Transactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: banking-transactions.listaccounttransactions
+      with:
+        accountId: tools.accountId
+        fromDate: tools.fromDate
+        toDate: tools.toDate
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,120 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Avaloq Payments API — Payments
+  description: 'Avaloq Payments API — Payments. 2 operations. Lead operation: Avaloq Create Payment Instruction. Self-contained
+    Naftiko capability covering one Avaloq business surface.'
+  tags:
+  - Avaloq
+  - Payments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AVALOQ_API_KEY: AVALOQ_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: payments-payments
+    baseUri: https://api.avaloq.com
+    description: Avaloq Payments API — Payments business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-payments
+      path: /v1/payments
+      operations:
+      - name: createpayment
+        method: POST
+        description: Avaloq Create Payment Instruction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listpayments
+        method: GET
+        description: Avaloq List Payment Instructions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Filter by account ID
+        - name: status
+          in: query
+          type: string
+          description: Filter by payment status
+    authentication:
+      type: bearer
+      token: '{{env.AVALOQ_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: payments-payments-rest
+    port: 8080
+    description: REST adapter for Avaloq Payments API — Payments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/payments
+      name: v1-payments
+      description: REST surface for v1-payments.
+      operations:
+      - method: POST
+        name: createpayment
+        description: Avaloq Create Payment Instruction
+        call: payments-payments.createpayment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listpayments
+        description: Avaloq List Payment Instructions
+        call: payments-payments.listpayments
+        with:
+          accountId: rest.accountId
+          status: rest.status
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: payments-payments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Avaloq Payments API — Payments. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: avaloq-create-payment-instruction
+      description: Avaloq Create Payment Instruction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: payments-payments.createpayment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: avaloq-list-payment-instructions
+      description: Avaloq List Payment Instructions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: payments-payments.listpayments
+      with:
+        accountId: tools.accountId
+        status: tools.status
+      outputParameters:
+      - type: object
+        mapping: $.
