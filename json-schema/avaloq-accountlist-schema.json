@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountList",
+  "title": "AccountList",
+  "type": "object",
+  "description": "Paginated list of accounts",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Account"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 5
+    },
+    "offset": {
+      "type": "integer",
+      "example": 0
+    }
+  }
+}

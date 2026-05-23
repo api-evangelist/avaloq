@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PaymentList",
+  "title": "PaymentList",
+  "type": "object",
+  "description": "Paginated list of payments",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Payment"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 42
+    },
+    "offset": {
+      "type": "integer",
+      "example": 0
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TransactionList",
+  "title": "TransactionList",
+  "type": "object",
+  "description": "Paginated list of transactions",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Transaction"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 124
+    },
+    "offset": {
+      "type": "integer",
+      "example": 0
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "operationId": "listAccounts",
+  "method": "GET",
+  "path": "/v1/accounts",
+  "summary": "Avaloq List Bank Accounts",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "ListAccounts200Example",
+      "example": {
+        "data": [
+          {
+            "id": "ACC-001234",
+            "accountNumber": "CH56048350012345678009",
+            "currency": "CHF",
+            "balance": 250000.0,
+            "status": "ACTIVE"
+          }
+        ],
+        "total": 3,
+        "offset": 0
+      }
+    }
+  ]
+}

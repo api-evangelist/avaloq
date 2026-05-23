@@ -1,0 +1,20 @@
+{
+  "operationId": "createPayment",
+  "method": "POST",
+  "path": "/v1/payments",
+  "summary": "Avaloq Create Payment Instruction",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "201",
+      "contentType": "application/json",
+      "name": "CreatePayment201Example",
+      "example": {
+        "id": "PAY-001234",
+        "status": "PENDING",
+        "amount": 5000.0,
+        "currency": "EUR"
+      }
+    }
+  ]
+}

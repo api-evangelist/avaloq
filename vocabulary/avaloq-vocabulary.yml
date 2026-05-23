@@ -1,0 +1,11 @@
+name: Avaloq Domain Vocabulary
+provider: Avaloq
+providerId: avaloq
+description: Tag-derived vocabulary for the Avaloq API surface; sourced from openapi/ tags.
+terms:
+- term: Accounts
+  description: Bank account management
+- term: Transactions
+  description: Transaction history and management
+- term: Customers
+  description: Customer data management

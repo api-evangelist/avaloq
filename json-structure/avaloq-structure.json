@@ -1,0 +1,118 @@
+{
+  "provider": "Avaloq",
+  "providerId": "avaloq",
+  "kind": "json-structure",
+  "description": "Structural overview of the Avaloq API surface; extracted from openapi/.",
+  "schemaCount": 8,
+  "operationCount": 6,
+  "schemas": [
+    {
+      "name": "Account",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "AccountList",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Transaction",
+      "type": "object",
+      "propertyCount": 11,
+      "required": []
+    },
+    {
+      "name": "TransactionList",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Customer",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "CustomerList",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "CreateCustomerRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "firstName",
+        "lastName",
+        "email"
+      ]
+    },
+    {
+      "name": "Error",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/v1/accounts",
+      "operationId": "listAccounts",
+      "summary": "Avaloq List Bank Accounts",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/accounts/{accountId}",
+      "operationId": "getAccount",
+      "summary": "Avaloq Get Bank Account",
+      "tags": [
+        "Accounts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/accounts/{accountId}/transactions",
+      "operationId": "listAccountTransactions",
+      "summary": "Avaloq List Account Transactions",
+      "tags": [
+        "Transactions"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers",
+      "operationId": "listCustomers",
+      "summary": "Avaloq List Customers",
+      "tags": [
+        "Customers"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/v1/customers",
+      "operationId": "createCustomer",
+      "summary": "Avaloq Create Customer",
+      "tags": [
+        "Customers"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/v1/customers/{customerId}",
+      "operationId": "getCustomer",
+      "summary": "Avaloq Get Customer",
+      "tags": [
+        "Customers"
+      ]
+    }
+  ]
+}

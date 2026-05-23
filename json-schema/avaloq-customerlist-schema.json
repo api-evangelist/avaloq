@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CustomerList",
+  "title": "CustomerList",
+  "type": "object",
+  "description": "Paginated list of customers",
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Customer"
+      }
+    },
+    "total": {
+      "type": "integer",
+      "example": 1250
+    },
+    "offset": {
+      "type": "integer",
+      "example": 0
+    }
+  }
+}
