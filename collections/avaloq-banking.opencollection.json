@@ -1,0 +1,192 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Avaloq Banking API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Avaloq List Bank Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/accounts",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "CUST-001234",
+                "type": "query",
+                "description": "Filter by customer ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by account status"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of bank accounts for the authenticated customer or organization."
+        },
+        {
+          "info": {
+            "name": "Avaloq Get Bank Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/accounts/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "ACC-001234",
+                "type": "path",
+                "description": "Account ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific bank account by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Avaloq List Account Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/accounts/:accountId/transactions",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "ACC-001234",
+                "type": "path",
+                "description": "Account ID"
+              },
+              {
+                "name": "fromDate",
+                "value": "2025-01-01",
+                "type": "query",
+                "description": "Start date filter"
+              },
+              {
+                "name": "toDate",
+                "value": "2025-12-31",
+                "type": "query",
+                "description": "End date filter"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions per page"
+              }
+            ]
+          },
+          "docs": "Retrieve transaction history for a specific bank account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Avaloq List Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/customers",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Results per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of bank customers."
+        },
+        {
+          "info": {
+            "name": "Avaloq Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.avaloq.com/v1/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new banking customer record."
+        },
+        {
+          "info": {
+            "name": "Avaloq Get Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/customers/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "CUST-001234",
+                "type": "path",
+                "description": "Customer ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific customer by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
