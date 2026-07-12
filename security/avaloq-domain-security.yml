@@ -1,0 +1,24 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: developer.avaloq.com
+  https: true
+  tls_cert_error: '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch,
+    certificate is not valid for ''developer.a'
+  hsts: null
+- host: www.avaloq.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 11 07:56:14 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.avaloq.com
+  https: false
+domains:
+- domain: avaloq.com
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

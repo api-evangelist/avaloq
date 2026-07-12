@@ -143,6 +143,10 @@ apis:
       - type: Documentation
         url: https://developer.avaloq.com/
 common:
+  - type: DomainSecurity
+    url: security/avaloq-domain-security.yml
+  - type: Authentication
+    url: authentication/avaloq-authentication.yml
   - type: Portal
     url: https://developer.avaloq.com/
   - type: Website
