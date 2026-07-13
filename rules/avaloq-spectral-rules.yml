@@ -1,230 +1,293 @@
+# avaloq — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 100% of servers already https (error)
+#   - servers-expected-domain: 4/4 servers on avaloq.com
+#   - path-params-casing: camel @ 100% (n=4)
+#   - query-params-casing: snake @ 64% (n=11)
+#   - operationid-casing: camel @ 100% (n=9)
+#   - schema-names-casing: pascal @ 100% (n=12)
+#   - schema-properties-casing: snake @ 56% (n=69)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - error-schema-defined: Error
+#   - pagination params observed: ['limit', 'offset']
+#   - merge: kept 25 existing, added 8 measured, upgraded 0
+#   - added: servers-expected-domain, path-params-casing, query-params-casing, operationid-casing, schema-names-casing, schema-properties-casing, error-schema-defined, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
   avaloq-info-title-required:
-    description: "Avaloq APIs must have a title in the info object."
-    message: "Info object must have a title."
+    description: Avaloq APIs must have a title in the info object.
+    message: Info object must have a title.
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: title
       function: truthy
-
   avaloq-info-version-required:
-    description: "Avaloq APIs must define a version."
-    message: "Info object must have a version."
+    description: Avaloq APIs must define a version.
+    message: Info object must have a version.
     severity: error
-    given: "$.info"
+    given: $.info
     then:
       field: version
       function: truthy
-
   avaloq-info-description-required:
-    description: "Avaloq APIs must have a description."
-    message: "Info object must have a description."
+    description: Avaloq APIs must have a description.
+    message: Info object must have a description.
     severity: warn
-    given: "$.info"
+    given: $.info
     then:
       field: description
       function: truthy
-
   avaloq-info-contact-required:
-    description: "Avaloq APIs must include contact information."
-    message: "Info object must have a contact."
+    description: Avaloq APIs must include contact information.
+    message: Info object must have a contact.
     severity: warn
-    given: "$.info"
+    given: $.info
     then:
       field: contact
       function: truthy
-
   avaloq-servers-required:
-    description: "Avaloq APIs must define at least one server."
-    message: "Servers array must be defined and non-empty."
+    description: Avaloq APIs must define at least one server.
+    message: Servers array must be defined and non-empty.
     severity: error
-    given: "$"
+    given: $
     then:
       field: servers
       function: truthy
-
   avaloq-server-url-https:
-    description: "Avaloq server URLs must use HTTPS."
-    message: "Server URL must use HTTPS protocol."
+    description: Avaloq server URLs must use HTTPS.
+    message: Server URL must use HTTPS protocol.
     severity: error
-    given: "$.servers[*]"
+    given: $.servers[*]
     then:
       field: url
       function: pattern
       functionOptions:
-        match: "^https://"
-
+        match: ^https://
   avaloq-paths-kebab-case:
-    description: "Avaloq path segments must use kebab-case."
-    message: "Path segments must use lowercase kebab-case."
+    description: Avaloq path segments must use kebab-case.
+    message: Path segments must use lowercase kebab-case.
     severity: warn
-    given: "$.paths"
+    given: $.paths
     then:
       function: pattern
       functionOptions:
-        match: "^(\\/[a-z0-9-{}]+)+$"
-
+        match: ^(\/[a-z0-9-{}]+)+$
   avaloq-operation-summary-required:
-    description: "All Avaloq operations must have a summary."
-    message: "Operation must have a summary."
+    description: All Avaloq operations must have a summary.
+    message: Operation must have a summary.
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: summary
       function: truthy
-
   avaloq-operation-description-required:
-    description: "All Avaloq operations must have a description."
-    message: "Operation must have a description."
+    description: All Avaloq operations must have a description.
+    message: Operation must have a description.
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: description
       function: truthy
-
   avaloq-operation-id-required:
-    description: "All Avaloq operations must have an operationId."
-    message: "Operation must have an operationId."
+    description: All Avaloq operations must have an operationId.
+    message: Operation must have an operationId.
     severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: operationId
       function: truthy
-
   avaloq-operation-tags-required:
-    description: "All Avaloq operations must have at least one tag."
-    message: "Operation must have at least one tag."
+    description: All Avaloq operations must have at least one tag.
+    message: Operation must have at least one tag.
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete]"
+    given: $.paths[*][get,post,put,patch,delete]
     then:
       field: tags
       function: truthy
-
   avaloq-parameters-description-required:
-    description: "All Avaloq parameters must have a description."
-    message: "Parameter must have a description."
+    description: All Avaloq parameters must have a description.
+    message: Parameter must have a description.
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete].parameters[*]"
+    given: $.paths[*][get,post,put,patch,delete].parameters[*]
     then:
       field: description
       function: truthy
-
   avaloq-request-body-description:
-    description: "Avaloq request bodies must have a description."
-    message: "Request body must have a description."
+    description: Avaloq request bodies must have a description.
+    message: Request body must have a description.
     severity: warn
-    given: "$.paths[*][post,put,patch].requestBody"
+    given: $.paths[*][post,put,patch].requestBody
     then:
       field: description
       function: truthy
-
   avaloq-response-200-required:
-    description: "Avaloq GET operations must have a 200 response."
-    message: "GET operation must define a 200 response."
+    description: Avaloq GET operations must have a 200 response.
+    message: GET operation must define a 200 response.
     severity: error
-    given: "$.paths[*].get.responses"
+    given: $.paths[*].get.responses
     then:
-      field: "200"
+      field: '200'
       function: truthy
-
   avaloq-response-400-required:
-    description: "Avaloq operations must document 400 errors."
-    message: "Operation must define a 400 error response."
+    description: Avaloq operations must document 400 errors.
+    message: Operation must define a 400 error response.
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete].responses"
+    given: $.paths[*][get,post,put,patch,delete].responses
     then:
-      field: "400"
+      field: '400'
       function: truthy
-
   avaloq-response-401-required:
-    description: "Avaloq operations must document 401 unauthorized."
-    message: "Operation must define a 401 response."
+    description: Avaloq operations must document 401 unauthorized.
+    message: Operation must define a 401 response.
     severity: warn
-    given: "$.paths[*][get,post,put,patch,delete].responses"
+    given: $.paths[*][get,post,put,patch,delete].responses
     then:
-      field: "401"
+      field: '401'
       function: truthy
-
   avaloq-schema-properties-described:
-    description: "Avaloq schema properties must have descriptions."
-    message: "Schema property must have a description."
+    description: Avaloq schema properties must have descriptions.
+    message: Schema property must have a description.
     severity: warn
-    given: "$.components.schemas[*].properties[*]"
+    given: $.components.schemas[*].properties[*]
     then:
       field: description
       function: truthy
-
   avaloq-schema-type-required:
-    description: "Avaloq schema properties must have a type."
-    message: "Schema property must have a type."
+    description: Avaloq schema properties must have a type.
+    message: Schema property must have a type.
     severity: warn
-    given: "$.components.schemas[*].properties[*]"
+    given: $.components.schemas[*].properties[*]
     then:
       field: type
       function: truthy
-
   avaloq-security-defined:
-    description: "Avaloq APIs must define security schemes."
-    message: "Components must include securitySchemes."
+    description: Avaloq APIs must define security schemes.
+    message: Components must include securitySchemes.
     severity: error
-    given: "$.components"
+    given: $.components
     then:
       field: securitySchemes
       function: truthy
-
   avaloq-bearer-auth-required:
-    description: "Avaloq APIs must use Bearer/JWT authentication."
-    message: "Security scheme must be OAuth2 or bearer type."
+    description: Avaloq APIs must use Bearer/JWT authentication.
+    message: Security scheme must be OAuth2 or bearer type.
     severity: warn
-    given: "$.components.securitySchemes[*]"
+    given: $.components.securitySchemes[*]
     then:
       field: type
       function: enumeration
       functionOptions:
-        values: [oauth2, http, apiKey]
-
+        values:
+        - oauth2
+        - http
+        - apiKey
   avaloq-get-no-request-body:
-    description: "Avaloq GET operations must not have a request body."
-    message: "GET operations must not include a requestBody."
+    description: Avaloq GET operations must not have a request body.
+    message: GET operations must not include a requestBody.
     severity: error
-    given: "$.paths[*].get"
+    given: $.paths[*].get
     then:
       field: requestBody
       function: falsy
-
   avaloq-delete-no-request-body:
-    description: "Avaloq DELETE operations must not have a request body."
-    message: "DELETE operations must not include a requestBody."
+    description: Avaloq DELETE operations must not have a request body.
+    message: DELETE operations must not include a requestBody.
     severity: warn
-    given: "$.paths[*].delete"
+    given: $.paths[*].delete
     then:
       field: requestBody
       function: falsy
-
   avaloq-post-returns-201:
-    description: "Avaloq POST creation operations should return 201."
-    message: "POST operations creating resources should return 201."
+    description: Avaloq POST creation operations should return 201.
+    message: POST operations creating resources should return 201.
     severity: warn
-    given: "$.paths[*].post.responses"
+    given: $.paths[*].post.responses
     then:
-      field: "201"
+      field: '201'
       function: truthy
-
   avaloq-schema-example-provided:
-    description: "Avaloq schemas should have examples."
-    message: "Schema should include an example."
+    description: Avaloq schemas should have examples.
+    message: Schema should include an example.
     severity: info
-    given: "$.components.schemas[*]"
+    given: $.components.schemas[*]
     then:
       field: example
       function: truthy
-
   avaloq-response-content-type:
-    description: "Avaloq API responses must specify content type."
-    message: "Response must define a content type."
+    description: Avaloq API responses must specify content type.
+    message: Response must define a content type.
     severity: warn
-    given: "$.paths[*][get,post,put,patch].responses[*]"
+    given: $.paths[*][get,post,put,patch].responses[*]
     then:
       field: content
+      function: truthy
+  servers-expected-domain:
+    description: Server URLs should be on the avaloq.com domain.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: avaloq\.com
+  path-params-casing:
+    description: Path parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  query-params-casing:
+    description: Query parameters should be snake_case (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: snake
+  operationid-casing:
+    description: Operation IDs should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be snake_case (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: snake
+  error-schema-defined:
+    description: A shared error schema (Error) should be defined for error payloads.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: Error
+      function: truthy
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
       function: truthy
