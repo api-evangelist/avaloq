@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
-  title: Avaloq Payments API
-  description: Payments processing API supporting SEPA, SWIFT, and domestic payment instructions.
+  title: Avaloq Banking Accounts Payments API
+  description: Core banking API for account management, transactions, and customer data. Provides access to the Avaloq banking platform for wealth management and digital banking.
   version: 1.0.0
   contact:
     name: Avaloq Developer Portal
@@ -16,8 +16,6 @@ security:
 tags:
 - name: Payments
   description: Payment instructions and transfers
-- name: Payment Status
-  description: Payment tracking and status
 paths:
   /v1/payments:
     post:
@@ -84,44 +82,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PaymentList'
-  /v1/payments/{paymentId}:
-    get:
-      operationId: getPayment
-      summary: Avaloq Get Payment Status
-      description: Retrieve the status and details of a specific payment instruction.
-      tags:
-      - Payment Status
-      x-microcks-operation:
-        delay: 0
-        dispatcher: FALLBACK
-      parameters:
-      - name: paymentId
-        in: path
-        required: true
-        schema:
-          type: string
-        description: Payment ID
-        example: PAY-001234
-      responses:
-        '200':
-          description: Payment details
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Payment'
-        '404':
-          description: Not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Error'
 components:
-  securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
   schemas:
+    PaymentList:
+      type: object
+      description: Paginated list of payments
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+        total:
+          type: integer
+          example: 42
+        offset:
+          type: integer
+          example: 0
     PaymentRequest:
       type: object
       required:
@@ -202,20 +178,6 @@ components:
           type: string
           description: End-to-end transaction reference
           example: E2E-001234
-    PaymentList:
-      type: object
-      description: Paginated list of payments
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payment'
-        total:
-          type: integer
-          example: 42
-        offset:
-          type: integer
-          example: 0
     Error:
       type: object
       description: Error response
@@ -226,3 +188,8 @@ components:
         message:
           type: string
           example: Required field missing
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

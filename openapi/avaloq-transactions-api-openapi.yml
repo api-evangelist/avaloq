@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: Avaloq Banking Accounts Transactions API
+  description: Core banking API for account management, transactions, and customer data. Provides access to the Avaloq banking platform for wealth management and digital banking.
+  version: 1.0.0
+  contact:
+    name: Avaloq Developer Portal
+    url: https://developer.avaloq.com/
+servers:
+- url: https://api.avaloq.com
+  description: Avaloq Production API
+- url: https://sandbox.avaloq.com
+  description: Avaloq Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Transactions
+  description: Transaction history and management
+paths:
+  /v1/accounts/{accountId}/transactions:
+    get:
+      operationId: listAccountTransactions
+      summary: Avaloq List Account Transactions
+      description: Retrieve transaction history for a specific bank account.
+      tags:
+      - Transactions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account ID
+        example: ACC-001234
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date
+        description: Start date filter
+        example: '2025-01-01'
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          format: date
+        description: End date filter
+        example: '2025-12-31'
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 50
+        description: Number of transactions per page
+      responses:
+        '200':
+          description: List of transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionList'
+components:
+  schemas:
+    TransactionList:
+      type: object
+      description: Paginated list of transactions
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        total:
+          type: integer
+          example: 124
+        offset:
+          type: integer
+          example: 0
+    Transaction:
+      type: object
+      description: Bank account transaction
+      properties:
+        id:
+          type: string
+          description: Transaction ID
+          example: TRX-001234
+        accountId:
+          type: string
+          example: ACC-001234
+        amount:
+          type: number
+          description: Transaction amount (positive=credit, negative=debit)
+          example: -1500.0
+        currency:
+          type: string
+          example: CHF
+        valueDate:
+          type: string
+          format: date
+          example: '2025-04-15'
+        bookingDate:
+          type: string
+          format: date
+          example: '2025-04-15'
+        description:
+          type: string
+          example: Transfer to savings
+        counterpartyName:
+          type: string
+          example: Jane Smith
+        counterpartyIban:
+          type: string
+          example: DE89370400440532013000
+        type:
+          type: string
+          enum:
+          - CREDIT
+          - DEBIT
+          - FEE
+          - INTEREST
+          example: DEBIT
+        status:
+          type: string
+          enum:
+          - PENDING
+          - BOOKED
+          - CANCELLED
+          example: BOOKED
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

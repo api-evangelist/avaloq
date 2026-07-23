@@ -1,0 +1,198 @@
+openapi: 3.1.0
+info:
+  title: Avaloq Banking Accounts API
+  description: Core banking API for account management, transactions, and customer data. Provides access to the Avaloq banking platform for wealth management and digital banking.
+  version: 1.0.0
+  contact:
+    name: Avaloq Developer Portal
+    url: https://developer.avaloq.com/
+servers:
+- url: https://api.avaloq.com
+  description: Avaloq Production API
+- url: https://sandbox.avaloq.com
+  description: Avaloq Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Accounts
+  description: Bank account management
+paths:
+  /v1/accounts:
+    get:
+      operationId: listAccounts
+      summary: Avaloq List Bank Accounts
+      description: Retrieve a list of bank accounts for the authenticated customer or organization.
+      tags:
+      - Accounts
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: customerId
+        in: query
+        schema:
+          type: string
+        description: Filter by customer ID
+        example: CUST-001234
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - CLOSED
+        description: Filter by account status
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 25
+        description: Number of results per page
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: Pagination offset
+      responses:
+        '200':
+          description: List of bank accounts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+              examples:
+                ListAccounts200Example:
+                  summary: Default listAccounts 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: ACC-001234
+                      accountNumber: CH56048350012345678009
+                      currency: CHF
+                      balance: 250000.0
+                      status: ACTIVE
+                    total: 3
+                    offset: 0
+  /v1/accounts/{accountId}:
+    get:
+      operationId: getAccount
+      summary: Avaloq Get Bank Account
+      description: Retrieve details for a specific bank account by ID.
+      tags:
+      - Accounts
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account ID
+        example: ACC-001234
+      responses:
+        '200':
+          description: Account details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Account:
+      type: object
+      description: Bank account details
+      properties:
+        id:
+          type: string
+          description: Avaloq account ID
+          example: ACC-001234
+        accountNumber:
+          type: string
+          description: IBAN or account number
+          example: CH56048350012345678009
+        accountName:
+          type: string
+          description: Account display name
+          example: Main Current Account
+        currency:
+          type: string
+          description: ISO 4217 currency code
+          example: CHF
+        balance:
+          type: number
+          description: Current balance
+          example: 250000.0
+        availableBalance:
+          type: number
+          description: Available balance after holds
+          example: 245000.0
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - CLOSED
+          - BLOCKED
+          example: ACTIVE
+        customerId:
+          type: string
+          description: Owning customer ID
+          example: CUST-001234
+        openedDate:
+          type: string
+          format: date
+          example: '2020-01-15'
+        accountType:
+          type: string
+          enum:
+          - CURRENT
+          - SAVINGS
+          - INVESTMENT
+          - CUSTODY
+          example: CURRENT
+    Error:
+      type: object
+      description: API error response
+      properties:
+        code:
+          type: string
+          example: INVALID_REQUEST
+        message:
+          type: string
+          example: Required field missing
+        details:
+          type: array
+          items:
+            type: string
+    AccountList:
+      type: object
+      description: Paginated list of accounts
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        total:
+          type: integer
+          example: 5
+        offset:
+          type: integer
+          example: 0
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
