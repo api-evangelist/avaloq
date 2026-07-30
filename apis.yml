@@ -6,7 +6,20 @@ description: >-
   fintech partners through Community APIs, Standard Adapters, and certified integrations for banking, wealth management,
   payments, and compliance.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/avaloq.png
 tags:
   - Banking
   - Digital Banking
@@ -19,129 +32,91 @@ created: '2024-01-20'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: avaloq:avaloq-banking-api
-    name: Avaloq Banking API
-    description: >-
-      Core banking API providing access to account management, transactions, and customer data for wealth management and
-      digital banking solutions. Supports over 7,500 REST API endpoints for comprehensive banking operations.
-    humanURL: https://developer.avaloq.com/
-    baseURL: https://api.avaloq.com
-    tags:
-      - Accounts
-      - Banking
-      - Core Banking
-      - Transactions
-      - Wealth Management
-    properties:
-      - type: Documentation
-        url: https://developer.avaloq.com/
-      - type: GettingStarted
-        url: https://developer.avaloq.com/web/developer-portal/getting-started/developing
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-banking-openapi.yml
-  - aid: avaloq:avaloq-wealth-management-api
-    name: Avaloq Wealth Management API
-    description: >-
-      Wealth management API providing investment portfolio management, client advisory, and asset management
-      capabilities. Integrates with BlackRock Aladdin for institutional-grade investment management and risk analytics.
-    humanURL: https://developer.avaloq.com/
-    baseURL: https://api.avaloq.com
-    tags:
-      - Asset Management
-      - Investment Management
-      - Portfolio Management
-      - Wealth Management
-    properties:
-      - type: Documentation
-        url: https://developer.avaloq.com/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-wealth-management-openapi.yml
-  - aid: avaloq:avaloq-payments-api
-    name: Avaloq Payments API
-    description: >-
-      Payments processing API supporting domestic and international payment instructions, SEPA transfers, SWIFT
-      messaging, and real-time payment rails for banking clients.
-    humanURL: https://developer.avaloq.com/
-    baseURL: https://api.avaloq.com
-    tags:
-      - Banking
-      - Payments
-      - SEPA
-      - SWIFT
-    properties:
-      - type: Documentation
-        url: https://developer.avaloq.com/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-payments-openapi.yml
-  - aid: avaloq:avaloq-client-management-api
-    name: Avaloq Client Management API
-    description: >-
-      Client onboarding, KYC, and relationship management API for banking and wealth management institutions. Provides
-      customer data management, document collection, and compliance screening for financial services.
-    humanURL: https://developer.avaloq.com/
-    baseURL: https://api.avaloq.com
-    tags:
-      - Client Management
-      - Financial Services
-      - KYC
-      - Onboarding
-    properties:
-      - type: Documentation
-        url: https://developer.avaloq.com/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-client-management-openapi.yml
-  - aid: avaloq:avaloq-trading-api
-    name: Avaloq Trading API
-    description: >-
-      Order management and trading API for executing equity, fixed income, and multi-asset trades through the Avaloq
-      banking platform. Supports order lifecycle management, execution, and settlement.
-    humanURL: https://developer.avaloq.com/
-    baseURL: https://api.avaloq.com
-    tags:
-      - Banking
-      - Financial Services
-      - Order Management
-      - Trading
-    properties:
-      - type: Documentation
-        url: https://developer.avaloq.com/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-trading-openapi.yml
-  - aid: avaloq:avaloq-compliance-api
-    name: Avaloq Compliance & Risk API
-    description: >-
-      Regulatory compliance and risk management API covering AML monitoring, sanctions screening, regulatory reporting,
-      and treasury risk for banking institutions. Supports FINMA, MiFID II, and other regulatory frameworks.
-    humanURL: https://developer.avaloq.com/
-    baseURL: https://api.avaloq.com
-    tags:
-      - AML
-      - Banking
-      - Compliance
-      - Regulatory Reporting
-      - Risk Management
-    properties:
-      - type: Documentation
-        url: https://developer.avaloq.com/
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-compliance-openapi.yml
-  - aid: avaloq:avaloq-community-api
-    name: Avaloq Community API
-    description: >-
-      Community APIs for fintech integration providing simplified REST endpoints for connecting third-party applications
-      with the Avaloq banking platform. Pre-vetted by Avaloq for secure, standards-based integration.
-    humanURL: https://developer.avaloq.com/
-    baseURL: https://api.avaloq.com
-    tags:
-      - Banking
-      - Community
-      - Fintech
-      - Integration
-    properties:
-      - type: Documentation
-        url: https://developer.avaloq.com/
+- aid: avaloq:avaloq-community-api
+  name: Avaloq Community API
+  description: >-
+    Community APIs for fintech integration providing simplified REST endpoints for connecting third-party
+    applications with the Avaloq banking platform. Pre-vetted by Avaloq for secure, standards-based integration.
+  humanURL: https://developer.avaloq.com/
+  baseURL: https://api.avaloq.com
+  tags:
+  - Banking
+  - Community
+  - Fintech
+  - Integration
+  properties:
+  - type: Documentation
+    url: https://developer.avaloq.com/
+- aid: avaloq:avaloq-accounts-api
+  name: Avaloq Accounts API
+  description: Bank account management
+  humanURL: https://developer.avaloq.com/
+  baseURL: https://api.avaloq.com
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/avaloq-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.avaloq.com/
+  - type: GettingStarted
+    url: https://developer.avaloq.com/web/developer-portal/getting-started/developing
+- aid: avaloq:avaloq-customers-api
+  name: Avaloq Customers API
+  description: Customer data management
+  humanURL: https://developer.avaloq.com/
+  baseURL: https://api.avaloq.com
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/avaloq-customers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.avaloq.com/
+  - type: GettingStarted
+    url: https://developer.avaloq.com/web/developer-portal/getting-started/developing
+- aid: avaloq:avaloq-payment-status-api
+  name: Avaloq Payment Status API
+  description: Payment tracking and status
+  humanURL: https://developer.avaloq.com/
+  baseURL: https://api.avaloq.com
+  tags:
+  - Payment Status
+  properties:
+  - type: OpenAPI
+    url: openapi/avaloq-payment-status-api-openapi.yml
+  - type: Documentation
+    url: https://developer.avaloq.com/
+  - type: GettingStarted
+    url: https://developer.avaloq.com/web/developer-portal/getting-started/developing
+- aid: avaloq:avaloq-payments-api
+  name: Avaloq Payments API
+  description: Payment instructions and transfers
+  humanURL: https://developer.avaloq.com/
+  baseURL: https://api.avaloq.com
+  tags:
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/avaloq-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.avaloq.com/
+  - type: GettingStarted
+    url: https://developer.avaloq.com/web/developer-portal/getting-started/developing
+- aid: avaloq:avaloq-transactions-api
+  name: Avaloq Transactions API
+  description: Transaction history and management
+  humanURL: https://developer.avaloq.com/
+  baseURL: https://api.avaloq.com
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/avaloq-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.avaloq.com/
+  - type: GettingStarted
+    url: https://developer.avaloq.com/web/developer-portal/getting-started/developing
 common:
   - type: AgenticAccess
     url: agentic-access/avaloq-agentic-access.yml
