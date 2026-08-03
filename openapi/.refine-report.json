@@ -1,0 +1,22 @@
+{
+  "provider": "avaloq",
+  "sources": [
+    "avaloq-accounts-api-openapi.yml",
+    "avaloq-customers-api-openapi.yml",
+    "avaloq-payment-status-api-openapi.yml",
+    "avaloq-payments-api-openapi.yml",
+    "avaloq-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "avaloq-accounts-api-openapi.yml",
+    "avaloq-customers-api-openapi.yml",
+    "avaloq-payment-status-api-openapi.yml",
+    "avaloq-payments-api-openapi.yml",
+    "avaloq-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

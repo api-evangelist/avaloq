@@ -1,0 +1,492 @@
+openapi: 3.1.0
+info:
+  title: Avaloq Banking API
+  description: Core banking API for account management, transactions, and customer data. Provides access to the Avaloq banking platform for wealth management and digital banking.
+  version: 1.0.0
+  contact:
+    name: Avaloq Developer Portal
+    url: https://developer.avaloq.com/
+servers:
+- url: https://api.avaloq.com
+  description: Avaloq Production API
+- url: https://sandbox.avaloq.com
+  description: Avaloq Sandbox
+security:
+- bearerAuth: []
+tags:
+- name: Accounts
+  description: Bank account management
+- name: Transactions
+  description: Transaction history and management
+- name: Customers
+  description: Customer data management
+paths:
+  /v1/accounts:
+    get:
+      operationId: listAccounts
+      summary: Avaloq List Bank Accounts
+      description: Retrieve a list of bank accounts for the authenticated customer or organization.
+      tags:
+      - Accounts
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: customerId
+        in: query
+        schema:
+          type: string
+        description: Filter by customer ID
+        example: CUST-001234
+      - name: status
+        in: query
+        schema:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - CLOSED
+        description: Filter by account status
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 25
+        description: Number of results per page
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: Pagination offset
+      responses:
+        '200':
+          description: List of bank accounts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+              examples:
+                ListAccounts200Example:
+                  summary: Default listAccounts 200 response
+                  x-microcks-default: true
+                  value:
+                    data:
+                    - id: ACC-001234
+                      accountNumber: CH56048350012345678009
+                      currency: CHF
+                      balance: 250000.0
+                      status: ACTIVE
+                    total: 3
+                    offset: 0
+  /v1/accounts/{accountId}:
+    get:
+      operationId: getAccount
+      summary: Avaloq Get Bank Account
+      description: Retrieve details for a specific bank account by ID.
+      tags:
+      - Accounts
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account ID
+        example: ACC-001234
+      responses:
+        '200':
+          description: Account details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v1/accounts/{accountId}/transactions:
+    get:
+      operationId: listAccountTransactions
+      summary: Avaloq List Account Transactions
+      description: Retrieve transaction history for a specific bank account.
+      tags:
+      - Transactions
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Account ID
+        example: ACC-001234
+      - name: fromDate
+        in: query
+        schema:
+          type: string
+          format: date
+        description: Start date filter
+        example: '2025-01-01'
+      - name: toDate
+        in: query
+        schema:
+          type: string
+          format: date
+        description: End date filter
+        example: '2025-12-31'
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 50
+        description: Number of transactions per page
+      responses:
+        '200':
+          description: List of transactions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionList'
+  /v1/customers:
+    get:
+      operationId: listCustomers
+      summary: Avaloq List Customers
+      description: Retrieve a list of bank customers.
+      tags:
+      - Customers
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 25
+        description: Results per page
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+        description: Pagination offset
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerList'
+    post:
+      operationId: createCustomer
+      summary: Avaloq Create Customer
+      description: Create a new banking customer record.
+      tags:
+      - Customers
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerRequest'
+      responses:
+        '201':
+          description: Customer created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /v1/customers/{customerId}:
+    get:
+      operationId: getCustomer
+      summary: Avaloq Get Customer
+      description: Retrieve details for a specific customer by ID.
+      tags:
+      - Customers
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+      parameters:
+      - name: customerId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Customer ID
+        example: CUST-001234
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Account:
+      type: object
+      description: Bank account details
+      properties:
+        id:
+          type: string
+          description: Avaloq account ID
+          example: ACC-001234
+        accountNumber:
+          type: string
+          description: IBAN or account number
+          example: CH56048350012345678009
+        accountName:
+          type: string
+          description: Account display name
+          example: Main Current Account
+        currency:
+          type: string
+          description: ISO 4217 currency code
+          example: CHF
+        balance:
+          type: number
+          description: Current balance
+          example: 250000.0
+        availableBalance:
+          type: number
+          description: Available balance after holds
+          example: 245000.0
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - CLOSED
+          - BLOCKED
+          example: ACTIVE
+        customerId:
+          type: string
+          description: Owning customer ID
+          example: CUST-001234
+        openedDate:
+          type: string
+          format: date
+          example: '2020-01-15'
+        accountType:
+          type: string
+          enum:
+          - CURRENT
+          - SAVINGS
+          - INVESTMENT
+          - CUSTODY
+          example: CURRENT
+    AccountList:
+      type: object
+      description: Paginated list of accounts
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        total:
+          type: integer
+          example: 5
+        offset:
+          type: integer
+          example: 0
+    Transaction:
+      type: object
+      description: Bank account transaction
+      properties:
+        id:
+          type: string
+          description: Transaction ID
+          example: TRX-001234
+        accountId:
+          type: string
+          example: ACC-001234
+        amount:
+          type: number
+          description: Transaction amount (positive=credit, negative=debit)
+          example: -1500.0
+        currency:
+          type: string
+          example: CHF
+        valueDate:
+          type: string
+          format: date
+          example: '2025-04-15'
+        bookingDate:
+          type: string
+          format: date
+          example: '2025-04-15'
+        description:
+          type: string
+          example: Transfer to savings
+        counterpartyName:
+          type: string
+          example: Jane Smith
+        counterpartyIban:
+          type: string
+          example: DE89370400440532013000
+        type:
+          type: string
+          enum:
+          - CREDIT
+          - DEBIT
+          - FEE
+          - INTEREST
+          example: DEBIT
+        status:
+          type: string
+          enum:
+          - PENDING
+          - BOOKED
+          - CANCELLED
+          example: BOOKED
+    TransactionList:
+      type: object
+      description: Paginated list of transactions
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        total:
+          type: integer
+          example: 124
+        offset:
+          type: integer
+          example: 0
+    Customer:
+      type: object
+      description: Banking customer record
+      properties:
+        id:
+          type: string
+          description: Customer ID
+          example: CUST-001234
+        firstName:
+          type: string
+          example: Jane
+        lastName:
+          type: string
+          example: Smith
+        email:
+          type: string
+          format: email
+          example: jane.smith@example.com
+        phone:
+          type: string
+          example: '+41791234567'
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - INACTIVE
+          - SUSPENDED
+          example: ACTIVE
+        kycStatus:
+          type: string
+          enum:
+          - PENDING
+          - APPROVED
+          - REJECTED
+          - REQUIRES_REVIEW
+          example: APPROVED
+        clientSince:
+          type: string
+          format: date
+          example: '2020-01-15'
+        residenceCountry:
+          type: string
+          example: CH
+        taxResidency:
+          type: string
+          example: CH
+    CustomerList:
+      type: object
+      description: Paginated list of customers
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        total:
+          type: integer
+          example: 1250
+        offset:
+          type: integer
+          example: 0
+    CreateCustomerRequest:
+      type: object
+      required:
+      - firstName
+      - lastName
+      - email
+      description: Request to create a new customer
+      properties:
+        firstName:
+          type: string
+          example: Jane
+        lastName:
+          type: string
+          example: Smith
+        email:
+          type: string
+          format: email
+          example: jane.smith@example.com
+        phone:
+          type: string
+          example: '+41791234567'
+        residenceCountry:
+          type: string
+          example: CH
+        dateOfBirth:
+          type: string
+          format: date
+          example: '1980-06-15'
+    Error:
+      type: object
+      description: API error response
+      properties:
+        code:
+          type: string
+          example: INVALID_REQUEST
+        message:
+          type: string
+          example: Required field missing
+        details:
+          type: array
+          items:
+            type: string
