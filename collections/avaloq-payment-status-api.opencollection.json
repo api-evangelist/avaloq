@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Avaloq Banking Accounts Payment Status API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payment Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Avaloq Get Payment Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/payments/:paymentId",
+            "params": [
+              {
+                "name": "paymentId",
+                "value": "PAY-001234",
+                "type": "path",
+                "description": "Payment ID"
+              }
+            ]
+          },
+          "docs": "Retrieve the status and details of a specific payment instruction."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

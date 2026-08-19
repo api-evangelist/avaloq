@@ -1,0 +1,296 @@
+{
+  "item": [
+    {
+      "id": "42024a70-d5b7-4492-8735-d16c73b37295",
+      "name": "Payments",
+      "description": {
+        "content": "Payment instructions and transfers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3b9b607c-0b10-4e35-b8ce-e89338490659",
+          "name": "Avaloq Create Payment Instruction",
+          "request": {
+            "name": "Avaloq Create Payment Instruction",
+            "description": {
+              "content": "Submit a new payment instruction for SEPA, SWIFT, or domestic transfer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"debtorAccountId\": \"<string>\",\n  \"creditorIban\": \"<string>\",\n  \"amount\": \"<number>\",\n  \"currency\": \"<string>\",\n  \"creditorName\": \"<string>\",\n  \"remittanceInfo\": \"<string>\",\n  \"paymentType\": \"<string>\",\n  \"executionDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3628ddbc-9e01-4b03-a5d6-9aa38de18375",
+              "name": "Payment instruction created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"debtorAccountId\": \"ACC-001234\",\n  \"creditorIban\": \"DE89370400440532013000\",\n  \"amount\": 5000,\n  \"currency\": \"EUR\",\n  \"creditorName\": \"Jane Smith\",\n  \"remittanceInfo\": \"Invoice 2025-001\",\n  \"paymentType\": \"SEPA_CREDIT\",\n  \"executionDate\": \"2025-04-20\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"PAY-001234\",\n  \"status\": \"PENDING\",\n  \"amount\": 5000,\n  \"currency\": \"EUR\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11cb43be-7733-4f65-bde5-75fcc28a121b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"debtorAccountId\": \"ACC-001234\",\n  \"creditorIban\": \"DE89370400440532013000\",\n  \"amount\": 5000,\n  \"currency\": \"EUR\",\n  \"creditorName\": \"Jane Smith\",\n  \"remittanceInfo\": \"Invoice 2025-001\",\n  \"paymentType\": \"SEPA_CREDIT\",\n  \"executionDate\": \"2025-04-20\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Required field missing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e5a78fb-d31b-4829-8a0b-6da279ceebf1",
+          "name": "Avaloq List Payment Instructions",
+          "request": {
+            "name": "Avaloq List Payment Instructions",
+            "description": {
+              "content": "Retrieve a list of payment instructions for an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountId",
+                  "value": "<string>",
+                  "description": "Filter by account ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by payment status"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6cf09da2-19b2-4abc-859f-ce672d233047",
+              "name": "List of payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"PAY-001234\",\n      \"status\": \"COMPLETED\",\n      \"amount\": 5000,\n      \"currency\": \"EUR\",\n      \"executionDate\": \"2025-04-20\",\n      \"valueDate\": \"2025-04-20\",\n      \"endToEndId\": \"E2E-001234\"\n    },\n    {\n      \"id\": \"PAY-001234\",\n      \"status\": \"COMPLETED\",\n      \"amount\": 5000,\n      \"currency\": \"EUR\",\n      \"executionDate\": \"2025-04-20\",\n      \"valueDate\": \"2025-04-20\",\n      \"endToEndId\": \"E2E-001234\"\n    }\n  ],\n  \"total\": 42,\n  \"offset\": 0\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.avaloq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4053c1a0-430a-4cf2-b6a0-5dcae27e3785",
+    "name": "Avaloq Banking Accounts Payments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Core banking API for account management, transactions, and customer data. Provides access to the Avaloq banking platform for wealth management and digital banking.\n\nContact Support:\n Name: Avaloq Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

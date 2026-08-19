@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Avaloq Banking Accounts Payments API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Avaloq List Payment Instructions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/payments",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "query",
+                "description": "Filter by account ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by payment status"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of payment instructions for an account."
+        },
+        {
+          "info": {
+            "name": "Avaloq Create Payment Instruction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.avaloq.com/v1/payments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a new payment instruction for SEPA, SWIFT, or domestic transfer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

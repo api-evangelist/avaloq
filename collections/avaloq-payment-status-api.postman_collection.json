@@ -1,0 +1,192 @@
+{
+  "item": [
+    {
+      "id": "588499ca-ae9c-45c5-bb2f-ba9f4b9ff906",
+      "name": "Payment Status",
+      "description": {
+        "content": "Payment tracking and status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "babb6f7b-0295-4640-affc-b737635000ea",
+          "name": "Avaloq Get Payment Status",
+          "request": {
+            "name": "Avaloq Get Payment Status",
+            "description": {
+              "content": "Retrieve the status and details of a specific payment instruction.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "payments",
+                ":paymentId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "paymentId",
+                  "description": "(Required) Payment ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5b78d23-a230-4c23-afb9-be4d1a523d26",
+              "name": "Payment details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    ":paymentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentId",
+                      "description": "(Required) Payment ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"PAY-001234\",\n  \"status\": \"COMPLETED\",\n  \"amount\": 5000,\n  \"currency\": \"EUR\",\n  \"executionDate\": \"2025-04-20\",\n  \"valueDate\": \"2025-04-20\",\n  \"endToEndId\": \"E2E-001234\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42ae9448-2669-4ee8-86e3-a94e2691cf30",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "payments",
+                    ":paymentId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "paymentId",
+                      "description": "(Required) Payment ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"INVALID_REQUEST\",\n  \"message\": \"Required field missing\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.avaloq.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6e83933b-17ad-4d62-b22d-b947a830fa5c",
+    "name": "Avaloq Banking Accounts Payment Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Core banking API for account management, transactions, and customer data. Provides access to the Avaloq banking platform for wealth management and digital banking.\n\nContact Support:\n Name: Avaloq Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

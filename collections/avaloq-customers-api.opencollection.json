@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Avaloq Banking Accounts Customers API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Avaloq List Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/customers",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Results per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of bank customers."
+        },
+        {
+          "info": {
+            "name": "Avaloq Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.avaloq.com/v1/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new banking customer record."
+        },
+        {
+          "info": {
+            "name": "Avaloq Get Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/customers/:customerId",
+            "params": [
+              {
+                "name": "customerId",
+                "value": "CUST-001234",
+                "type": "path",
+                "description": "Customer ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details for a specific customer by ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

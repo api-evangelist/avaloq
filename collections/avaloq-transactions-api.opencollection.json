@@ -1,0 +1,61 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Avaloq Banking Accounts Transactions API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Avaloq List Account Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.avaloq.com/v1/accounts/:accountId/transactions",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "ACC-001234",
+                "type": "path",
+                "description": "Account ID"
+              },
+              {
+                "name": "fromDate",
+                "value": "2025-01-01",
+                "type": "query",
+                "description": "Start date filter"
+              },
+              {
+                "name": "toDate",
+                "value": "2025-12-31",
+                "type": "query",
+                "description": "End date filter"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of transactions per page"
+              }
+            ]
+          },
+          "docs": "Retrieve transaction history for a specific bank account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
