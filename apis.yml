@@ -23,6 +23,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/avaloq.png
 tags:
   - Banking
   - Digital Banking
+  - Financial-Services
+  - Fintech
+  - Payments
+  - Wealth Management
+tags_raw:
+  - Banking
+  - Digital Banking
   - Financial Services
   - Fintech
   - Payments
@@ -53,6 +60,8 @@ apis:
   humanURL: https://developer.avaloq.com/
   baseURL: https://api.avaloq.com
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -109,6 +118,8 @@ apis:
   humanURL: https://developer.avaloq.com/
   baseURL: https://api.avaloq.com
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
