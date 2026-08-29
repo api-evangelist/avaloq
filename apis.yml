@@ -140,6 +140,9 @@ apis:
   - type: GettingStarted
     url: https://developer.avaloq.com/web/developer-portal/getting-started/developing
 common:
+  - type: CapabilityMap
+    url: capabilities/avaloq-capability-edges.yml
+    name: Avaloq Business Capability Map
   - type: AgenticAccess
     url: agentic-access/avaloq-agentic-access.yml
   - type: DomainSecurity
