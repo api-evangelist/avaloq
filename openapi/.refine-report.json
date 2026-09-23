@@ -1,22 +1,30 @@
 {
   "provider": "avaloq",
   "sources": [
-    "avaloq-accounts-api-openapi.yml",
-    "avaloq-customers-api-openapi.yml",
-    "avaloq-payment-status-api-openapi.yml",
-    "avaloq-payments-api-openapi.yml",
-    "avaloq-transactions-api-openapi.yml"
+    "_original/avaloq-banking-openapi.yml",
+    "_original/avaloq-payments-openapi.yml"
   ],
   "outputs": [
     "avaloq-accounts-api-openapi.yml",
     "avaloq-customers-api-openapi.yml",
+    "avaloq-transactions-api-openapi.yml",
     "avaloq-payment-status-api-openapi.yml",
-    "avaloq-payments-api-openapi.yml",
-    "avaloq-transactions-api-openapi.yml"
+    "avaloq-payments-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "avaloq-banking-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "avaloq-payments-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "avaloq-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avaloq-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avaloq-payment-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avaloq-payments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "avaloq-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

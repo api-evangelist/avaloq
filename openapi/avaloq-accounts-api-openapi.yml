@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Avaloq Banking Accounts API
   description: Core banking API for account management, transactions, and customer data. Provides access to the Avaloq banking platform for wealth management and digital banking.
@@ -104,6 +104,34 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    AccountList:
+      type: object
+      description: Paginated list of accounts
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        total:
+          type: integer
+          example: 5
+        offset:
+          type: integer
+          example: 0
+    Error:
+      type: object
+      description: API error response
+      properties:
+        code:
+          type: string
+          example: INVALID_REQUEST
+        message:
+          type: string
+          example: Required field missing
+        details:
+          type: array
+          items:
+            type: string
     Account:
       type: object
       description: Bank account details
@@ -156,34 +184,6 @@ components:
           - INVESTMENT
           - CUSTODY
           example: CURRENT
-    Error:
-      type: object
-      description: API error response
-      properties:
-        code:
-          type: string
-          example: INVALID_REQUEST
-        message:
-          type: string
-          example: Required field missing
-        details:
-          type: array
-          items:
-            type: string
-    AccountList:
-      type: object
-      description: Paginated list of accounts
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-        total:
-          type: integer
-          example: 5
-        offset:
-          type: integer
-          example: 0
   responses:
     NotFound:
       description: Not found

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Avaloq Banking Accounts Customers API
+  title: Avaloq Banking Customers API
   description: Core banking API for account management, transactions, and customer data. Provides access to the Avaloq banking platform for wealth management and digital banking.
   version: 1.0.0
   contact:
@@ -99,7 +99,34 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  responses:
+    NotFound:
+      description: Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      description: API error response
+      properties:
+        code:
+          type: string
+          example: INVALID_REQUEST
+        message:
+          type: string
+          example: Required field missing
+        details:
+          type: array
+          items:
+            type: string
     Customer:
       type: object
       description: Banking customer record
@@ -146,20 +173,6 @@ components:
         taxResidency:
           type: string
           example: CH
-    Error:
-      type: object
-      description: API error response
-      properties:
-        code:
-          type: string
-          example: INVALID_REQUEST
-        message:
-          type: string
-          example: Required field missing
-        details:
-          type: array
-          items:
-            type: string
     CustomerList:
       type: object
       description: Paginated list of customers
@@ -202,19 +215,6 @@ components:
           type: string
           format: date
           example: '1980-06-15'
-  responses:
-    BadRequest:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    NotFound:
-      description: Not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     bearerAuth:
       type: http
