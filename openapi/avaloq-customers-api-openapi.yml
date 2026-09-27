@@ -100,14 +100,14 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    NotFound:
-      description: Not found
+    BadRequest:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    BadRequest:
-      description: Bad request
+    NotFound:
+      description: Not found
       content:
         application/json:
           schema:
@@ -127,6 +127,20 @@ components:
           type: array
           items:
             type: string
+    CustomerList:
+      type: object
+      description: Paginated list of customers
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Customer'
+        total:
+          type: integer
+          example: 1250
+        offset:
+          type: integer
+          example: 0
     Customer:
       type: object
       description: Banking customer record
@@ -173,20 +187,6 @@ components:
         taxResidency:
           type: string
           example: CH
-    CustomerList:
-      type: object
-      description: Paginated list of customers
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Customer'
-        total:
-          type: integer
-          example: 1250
-        offset:
-          type: integer
-          example: 0
     CreateCustomerRequest:
       type: object
       required:
