@@ -84,30 +84,6 @@ paths:
                 $ref: '#/components/schemas/PaymentList'
 components:
   schemas:
-    Error:
-      type: object
-      description: Error response
-      properties:
-        code:
-          type: string
-          example: INVALID_REQUEST
-        message:
-          type: string
-          example: Required field missing
-    PaymentList:
-      type: object
-      description: Paginated list of payments
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payment'
-        total:
-          type: integer
-          example: 42
-        offset:
-          type: integer
-          example: 0
     PaymentRequest:
       type: object
       required:
@@ -153,6 +129,30 @@ components:
           type: string
           format: date
           example: '2025-04-20'
+    Error:
+      type: object
+      description: Error response
+      properties:
+        code:
+          type: string
+          example: INVALID_REQUEST
+        message:
+          type: string
+          example: Required field missing
+    PaymentList:
+      type: object
+      description: Paginated list of payments
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+        total:
+          type: integer
+          example: 42
+        offset:
+          type: integer
+          example: 0
     Payment:
       type: object
       description: Payment instruction details

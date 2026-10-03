@@ -111,6 +111,20 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    AccountList:
+      type: object
+      description: Paginated list of accounts
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        total:
+          type: integer
+          example: 5
+        offset:
+          type: integer
+          example: 0
     Error:
       type: object
       description: API error response
@@ -177,20 +191,6 @@ components:
           - INVESTMENT
           - CUSTODY
           example: CURRENT
-    AccountList:
-      type: object
-      description: Paginated list of accounts
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-        total:
-          type: integer
-          example: 5
-        offset:
-          type: integer
-          example: 0
   securitySchemes:
     bearerAuth:
       type: http
