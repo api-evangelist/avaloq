@@ -84,6 +84,20 @@ paths:
                 $ref: '#/components/schemas/PaymentList'
 components:
   schemas:
+    PaymentList:
+      type: object
+      description: Paginated list of payments
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+        total:
+          type: integer
+          example: 42
+        offset:
+          type: integer
+          example: 0
     PaymentRequest:
       type: object
       required:
@@ -139,20 +153,6 @@ components:
         message:
           type: string
           example: Required field missing
-    PaymentList:
-      type: object
-      description: Paginated list of payments
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Payment'
-        total:
-          type: integer
-          example: 42
-        offset:
-          type: integer
-          example: 0
     Payment:
       type: object
       description: Payment instruction details
