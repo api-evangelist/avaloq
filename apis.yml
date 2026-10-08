@@ -142,6 +142,12 @@ apis:
   - type: GettingStarted
     url: https://developer.avaloq.com/web/developer-portal/getting-started/developing
 common:
+  - type: Plans
+    url: plans/avaloq-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/avaloq-rate-limits.yml
+  - type: FinOps
+    url: finops/avaloq-finops.yml
   - url: https://www.avaloq.com/insights
     type: Blog
   - type: CapabilityMap
