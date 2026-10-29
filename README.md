@@ -1,4 +1,4 @@
-# Avaloq (avaloq)
+# Avaloq
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,209 +66,206 @@
 
 Avaloq is a leading provider of wealth management technology and digital banking solutions, offering over 7,500 REST API endpoints for financial services integration. The platform connects more than 170 financial institutions with 200+ fintech partners through Community APIs, Standard Adapters, and certified integrations for banking, wealth management, payments, and compliance.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/apis.yml)
+**Areas:** Banking · Digital Banking · Financial Services · Fintech · Payments · Wealth Management
 
-## Scope
+## Avaloq on APIs.io
 
-- **Type:** Index
+Everything profiled for Avaloq is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/avaloq/](https://apis.io/providers/avaloq/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (6)
 
-- Banking
-- Digital Banking
-- Financial Services
-- Fintech
-- Payments
-- Wealth Management
+- [Avaloq Community API](https://apis.io/apis/avaloq/avaloq-community-api/) — Community APIs for fintech integration providing simplified REST endpoints for connecting third-party applications with the Avaloq banking platform.…
+- [Avaloq Accounts API](https://apis.io/apis/avaloq/avaloq-accounts-api/) — Bank account management
+- [Avaloq Customers API](https://apis.io/apis/avaloq/avaloq-customers-api/) — Customer data management
+- [Avaloq Payment Status API](https://apis.io/apis/avaloq/avaloq-payment-status-api/) — Payment tracking and status
+- [Avaloq Payments API](https://apis.io/apis/avaloq/avaloq-payments-api/) — Payment instructions and transfers
+- [Avaloq Transactions API](https://apis.io/apis/avaloq/avaloq-transactions-api/) — Transaction history and management
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-20
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Avaloq Banking API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Core banking API providing access to account management, transactions, and customer data for wealth management and digital banking solutions. Supports over 7,500 REST API endpoints for comprehensive banking operations.
+- [Avaloq Agentic Access](https://apis.io/agentic-access/avaloq/avaloq-agentic-access/)
 
-- **Human URL:** [https://developer.avaloq.com/](https://developer.avaloq.com/)
-- **Base URL:** `https://api.avaloq.com`
+#### JSON Schema (21)
 
-#### Tags
+The data models the API reads and writes.
 
-- Accounts
-- Banking
-- Core Banking
-- Transactions
-- Wealth Management
+- [Account](https://apis.io/schemas/avaloq/avaloq-account/)
+- [AccountList](https://apis.io/schemas/avaloq/avaloq-accountlist/)
+- [CreateCustomerRequest](https://apis.io/schemas/avaloq/avaloq-createcustomerrequest/)
+- [Customer](https://apis.io/schemas/avaloq/avaloq-customer/)
+- [CustomerList](https://apis.io/schemas/avaloq/avaloq-customerlist/)
+- [Error](https://apis.io/schemas/avaloq/avaloq-error/)
+- [Payment](https://apis.io/schemas/avaloq/avaloq-payment/)
+- [PaymentList](https://apis.io/schemas/avaloq/avaloq-paymentlist/)
+- [PaymentRequest](https://apis.io/schemas/avaloq/avaloq-paymentrequest/)
+- [Transaction](https://apis.io/schemas/avaloq/avaloq-transaction/)
+- [TransactionList](https://apis.io/schemas/avaloq/avaloq-transactionlist/)
+- [Account](https://apis.io/schemas/avaloq/banking-account/)
+- [AccountList](https://apis.io/schemas/avaloq/banking-account-list/)
+- [CreateCustomerRequest](https://apis.io/schemas/avaloq/banking-create-customer-request/)
+- [Customer](https://apis.io/schemas/avaloq/banking-customer/)
+- [CustomerList](https://apis.io/schemas/avaloq/banking-customer-list/)
+- [Transaction](https://apis.io/schemas/avaloq/banking-transaction/)
+- [TransactionList](https://apis.io/schemas/avaloq/banking-transaction-list/)
+- [Payment](https://apis.io/schemas/avaloq/payments-payment/)
+- [PaymentList](https://apis.io/schemas/avaloq/payments-payment-list/)
+- [PaymentRequest](https://apis.io/schemas/avaloq/payments-payment-request/)
 
-#### Properties
+#### JSON Structure (11)
 
-- [Documentation](https://developer.avaloq.com/)
-- [Getting Started](https://developer.avaloq.com/web/developer-portal/getting-started/developing)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-banking-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/avaloq-banking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-banking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/avaloq-payments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-payments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-### Avaloq Wealth Management API
+- [Avaloq Structure](https://apis.io/json-structure/avaloq/avaloq-structure/)
+- [Banking Account List Structure](https://apis.io/json-structure/avaloq/banking-account-list-structure/)
+- [Banking Account Structure](https://apis.io/json-structure/avaloq/banking-account-structure/)
+- [Banking Create Customer Request Structure](https://apis.io/json-structure/avaloq/banking-create-customer-request-structure/)
+- [Banking Customer List Structure](https://apis.io/json-structure/avaloq/banking-customer-list-structure/)
+- [Banking Customer Structure](https://apis.io/json-structure/avaloq/banking-customer-structure/)
+- [Banking Transaction List Structure](https://apis.io/json-structure/avaloq/banking-transaction-list-structure/)
+- [Banking Transaction Structure](https://apis.io/json-structure/avaloq/banking-transaction-structure/)
+- [Payments Payment List Structure](https://apis.io/json-structure/avaloq/payments-payment-list-structure/)
+- [Payments Payment Request Structure](https://apis.io/json-structure/avaloq/payments-payment-request-structure/)
+- [Payments Payment Structure](https://apis.io/json-structure/avaloq/payments-payment-structure/)
 
-Wealth management API providing investment portfolio management, client advisory, and asset management capabilities. Integrates with BlackRock Aladdin for institutional-grade investment management and risk analytics.
+#### JSON-LD (2)
 
-- **Human URL:** [https://developer.avaloq.com/](https://developer.avaloq.com/)
-- **Base URL:** `https://api.avaloq.com`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Avaloq Banking Context](https://apis.io/jsonld/avaloq/avaloq-banking-context/)
+- [Avaloq Payments Context](https://apis.io/jsonld/avaloq/avaloq-payments-context/)
 
-- Asset Management
-- Investment Management
-- Portfolio Management
-- Wealth Management
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://developer.avaloq.com/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-wealth-management-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/avaloq-banking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-banking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/avaloq-payments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-payments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Avaloq Vocabulary](https://apis.io/vocabularies/avaloq/avaloq-vocabulary/)
 
-### Avaloq Payments API
+#### Examples (12)
 
-Payments processing API supporting domestic and international payment instructions, SEPA transfers, SWIFT messaging, and real-time payment rails for banking clients.
+Example requests and responses.
 
-- **Human URL:** [https://developer.avaloq.com/](https://developer.avaloq.com/)
-- **Base URL:** `https://api.avaloq.com`
+- [Avaloq Createpayment Example](https://apis.io/examples/avaloq/avaloq-createpayment-example/)
+- [Avaloq Listaccounts Example](https://apis.io/examples/avaloq/avaloq-listaccounts-example/)
+- [Banking Account Example](https://apis.io/examples/avaloq/banking-account-example/)
+- [Banking Account List Example](https://apis.io/examples/avaloq/banking-account-list-example/)
+- [Banking Create Customer Request Example](https://apis.io/examples/avaloq/banking-create-customer-request-example/)
+- [Banking Customer Example](https://apis.io/examples/avaloq/banking-customer-example/)
+- [Banking Customer List Example](https://apis.io/examples/avaloq/banking-customer-list-example/)
+- [Banking Transaction Example](https://apis.io/examples/avaloq/banking-transaction-example/)
+- [Banking Transaction List Example](https://apis.io/examples/avaloq/banking-transaction-list-example/)
+- [Payments Payment Example](https://apis.io/examples/avaloq/payments-payment-example/)
+- [Payments Payment List Example](https://apis.io/examples/avaloq/payments-payment-list-example/)
+- [Payments Payment Request Example](https://apis.io/examples/avaloq/payments-payment-request-example/)
 
-#### Tags
+#### Collections (7)
 
-- Banking
-- Payments
-- SEPA
-- SWIFT
+Postman and Open Collection request collections.
 
-#### Properties
+- [Avaloq Banking Accounts API](https://apis.io/collections/avaloq/open-avaloq-accounts-api/)
+- [Avaloq Banking API](https://apis.io/collections/avaloq/open-avaloq-banking/)
+- [Avaloq Banking Accounts Customers API](https://apis.io/collections/avaloq/open-avaloq-customers-api/)
+- [Avaloq Banking Accounts Payment Status API](https://apis.io/collections/avaloq/open-avaloq-payment-status-api/)
+- [Avaloq Payments API](https://apis.io/collections/avaloq/open-avaloq-payments/)
+- [Avaloq Banking Accounts Payments API](https://apis.io/collections/avaloq/open-avaloq-payments-api/)
+- [Avaloq Banking Accounts Transactions API](https://apis.io/collections/avaloq/open-avaloq-transactions-api/)
 
-- [Documentation](https://developer.avaloq.com/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-payments-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/avaloq-banking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-banking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/avaloq-payments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-payments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-### Avaloq Client Management API
+Spectral rulesets for the provider's contracts.
 
-Client onboarding, KYC, and relationship management API for banking and wealth management institutions. Provides customer data management, document collection, and compliance screening for financial services.
+- [Avaloq — jsonschema rules](https://apis.io/rules/avaloq/avaloq-jsonschema-spectral-rules/)
+- [Avaloq API Rules](https://apis.io/rules/avaloq/avaloq-spectral-rules/)
 
-- **Human URL:** [https://developer.avaloq.com/](https://developer.avaloq.com/)
-- **Base URL:** `https://api.avaloq.com`
+#### Security (2)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Client Management
-- Financial Services
-- KYC
-- Onboarding
+- [Avaloq Authentication](https://apis.io/security/avaloq/avaloq-authentication/)
+- [Avaloq Domain Security](https://apis.io/security/avaloq/avaloq-domain-security/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://developer.avaloq.com/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-client-management-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/avaloq-banking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-banking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/avaloq-payments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-payments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-### Avaloq Trading API
+- [Avaloq Plans Pricing](https://apis.io/plans/avaloq/avaloq-plans-pricing/)
 
-Order management and trading API for executing equity, fixed income, and multi-asset trades through the Avaloq banking platform. Supports order lifecycle management, execution, and settlement.
+#### Rate limits (1)
 
-- **Human URL:** [https://developer.avaloq.com/](https://developer.avaloq.com/)
-- **Base URL:** `https://api.avaloq.com`
+Published request limits.
 
-#### Tags
+- [Avaloq Rate Limits](https://apis.io/rate-limits/avaloq/avaloq-rate-limits/)
 
-- Banking
-- Financial Services
-- Order Management
-- Trading
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://developer.avaloq.com/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-trading-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/avaloq-banking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-banking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/avaloq-payments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-payments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Avaloq Finops](https://apis.io/finops/avaloq/avaloq-finops/)
 
-### Avaloq Compliance & Risk API
+## Where to find this API
 
-Regulatory compliance and risk management API covering AML monitoring, sanctions screening, regulatory reporting, and treasury risk for banking institutions. Supports FINMA, MiFID II, and other regulatory frameworks.
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- **Human URL:** [https://developer.avaloq.com/](https://developer.avaloq.com/)
-- **Base URL:** `https://api.avaloq.com`
-
-#### Tags
-
-- AML
-- Banking
-- Compliance
-- Regulatory Reporting
-- Risk Management
-
-#### Properties
-
-- [Documentation](https://developer.avaloq.com/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-compliance-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/avaloq-banking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-banking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/avaloq-payments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-payments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Avaloq Community API
-
-Community APIs for fintech integration providing simplified REST endpoints for connecting third-party applications with the Avaloq banking platform. Pre-vetted by Avaloq for secure, standards-based integration.
-
-- **Human URL:** [https://developer.avaloq.com/](https://developer.avaloq.com/)
-- **Base URL:** `https://api.avaloq.com`
-
-#### Tags
-
-- Banking
-- Community
-- Fintech
-- Integration
-
-#### Properties
-
-- [Documentation](https://developer.avaloq.com/)
-- [Postman Collection](collections/avaloq-banking.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-banking.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/avaloq-payments.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/avaloq-payments.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://developer.avaloq.com/)
 - [Website](https://www.avaloq.com/)
-- [Getting Started](https://developer.avaloq.com/web/developer-portal/getting-started/developing)
-- [Ecosystem](https://www.avaloq.com/platform/ecosystem)
-- [Academy](https://avaloq.academy/)
+- [Getting started](https://developer.avaloq.com/web/developer-portal/getting-started/developing)
 - [Support](https://www.avaloq.com/en/for-developers)
-- [GitHub Organization](https://github.com/avaloq)
-- [LinkedIn](https://www.linkedin.com/company/avaloq/)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/openapi/avaloq-banking-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/rules/avaloq-spectral-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/avaloq/refs/heads/main/vocabulary/avaloq-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Blog](https://www.avaloq.com/insights)
+- [GitHub](https://github.com/avaloq)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 31.9** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 55.2 |
+| Contract governance | 27.3 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 39.3 |
+| Access clarity | 5.3 |
+
+**Agent readiness 22.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 13.4** — Banking & Open Finance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/avaloq/](https://apis.io/providers/avaloq/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Avaloq: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/avaloq/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
